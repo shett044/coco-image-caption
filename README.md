@@ -1,13 +1,17 @@
 # coco-image-caption
 Image Captioning using CNN+RNN Encoder-Decoder Architecture in PyTorch
 
+[Image Caption Results](result_show.ipynb) : Please check Actual caption and Predicted caption in action.
 
 
-![Image Captioning Model](https://www.margotwagner.com/project/image-captioning-using-an-lstm-network/featured_hu4146b84b1dacd2eac03cb0513a4861c8_260343_720x2500_fit_q75_h2_lanczos_3.webp)
 
-Image Captioning Model
+
+
+
+
 
 ## Project Overview
+![Image Captioning Model](https://www.margotwagner.com/project/image-captioning-using-an-lstm-network/featured_hu4146b84b1dacd2eac03cb0513a4861c8_260343_720x2500_fit_q75_h2_lanczos_3.webp)
 
 In this project, we will create a neural network architecture to automatically generate captions from images. 
 
