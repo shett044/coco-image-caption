@@ -1,9 +1,7 @@
 # coco-image-caption
-Image Captioning using CNN+RNN Encoder-Decoder Architecture in PyTorch
+Image Captioning using CNN+RNN Encoder-Decoder Architecture in PyTorch with Teacher forcing
 
 [Image Caption Results](result_show.ipynb) : Please check Actual caption and Predicted caption in action.
-
-
 
 
 
@@ -87,6 +85,15 @@ The project is structured as a series of Jupyter notebooks that are designed to 
 
 # LSTM Decoder
 
-In the project, we pass all our inputs as a sequence to an LSTM. A sequence looks like this: first a feature vector that is extracted from an input image, then a start word, then the next word, the next word, and so on! 
+In the project, we pass all our inputs as a sequence to an LSTM. A sequence looks like this: first a feature vector that is extracted from an input image, then a start word, then the next word, the next word, and so on! Training uses Teacher forcing technique.
+
+# Metrics: Perplexity
+Define the quality of model output
+
+
+# Resources:
+* https://github.com/tatwan/image-captioning-pytorch/
+* https://github.com/ritchieng/the-incredible-pytorch#image-captioning
+
 
 
