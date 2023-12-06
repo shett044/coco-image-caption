@@ -8,12 +8,10 @@ import torch.backends.cudnn as cudnn
 from torch.autograd import Variable
 import math
 from torch.nn.utils.clip_grad import clip_grad_norm
-from torch.nn.utils.rnn import pack_padded_sequence
 from data_utils import build_vocab, get_coco_data, get_iterator
 from utils import setup_logging, adjust_optimizer, AverageMeter, select_optimizer
 from model import CaptionModel
 from torchvision.models import resnet
-from torch.nn.functional import log_softmax
 import torch
 
 from pathlib import Path

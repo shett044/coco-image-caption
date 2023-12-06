@@ -6,7 +6,7 @@ import torchvision.transforms as transforms
 import string
 import pandas as pd
 from random import randrange
-from typing import Tuple, List, Callable, Iterable
+from typing import Tuple, List, Callable, Iterable, Dict
 from torch import types as pt
 from PIL import ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
@@ -111,7 +111,7 @@ def get_target(vocab:List[str], rnd_caption = True)-> Callable:
         return torch.Tensor([word2Idx.get(c, word2Idx[__UNK_TOKEN]) for c in caption])
     return get_caption
 
-def get_coco_data(vocab:List[str], train:bool = True, img_size:int = 224, scale_size:int = 256, normalize: Dict[str:List[float]] = __normalize) -> Tuple[Iterable, List[str]]:
+def get_coco_data(vocab:List[str], train:bool = True, img_size:int = 224, scale_size:int = 256, normalize = __normalize) -> Tuple[Iterable, List[str]]:
     """Get COCO dataset by performing Image transformation and caption transformation
 
     Args:

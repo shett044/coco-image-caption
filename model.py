@@ -1,13 +1,12 @@
-from unicodedata import bidirectional
+
 import torch
 import torch.nn as nn
 from torch.autograd import Variable
-from torch.nn.utils.rnn import pack_padded_sequence
 from beam_search import CaptionGenerator
 from data_utils import __normalize as normalize_values,  __EOS_TOKEN
 from torchvision import transforms
-from torch.nn.functional import log_softmax
-import random
+# from torch.nn.functional import log_softmax
+# import random
 import torch.nn.functional as F 
 
 class CaptionModel(nn.Module):
@@ -53,11 +52,12 @@ class CaptionModel(nn.Module):
         
         """Samples captions for given image features."""
         output = []
-        preproc = [transforms.ToPILImage(), transforms.Resize(256),
+        preproc = [ transforms.Resize(256),
                     transforms.CenterCrop(224),
                     transforms.ToTensor(),
                     transforms.Normalize(**normalize_values)]
-
+        if isinstance(imgs, torch.Tensor):
+            preproc = [transforms.ToPILImage()] + preproc
         img_transform = transforms.Compose(preproc)
         imgs = img_transform(imgs)
         (h, c) = (torch.randn(self.num_layers, 1, self.rnn_size).cuda(), torch.randn(self.num_layers, 1, self.rnn_size).cuda())
