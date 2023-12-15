@@ -14,7 +14,7 @@ from cocoDataset import COCO_DS
 from pathlib import Path
 import logging
 
-__COCO_IMG_PATH = Path("caption", "data", "val_004_image")
+__COCO_IMG_PATH = Path("caption", "data", "val2014")
 
 __COCO_ANN_PATH = Path("caption", "data", "annotate")
 
@@ -67,9 +67,10 @@ def simple_tokenize(s:str)-> List[str]:
         List[str]: Token of words
     """
     translator = str.maketrans('', '', string.punctuation)
-    return s.lower().translate(translator).strip().split()
+    toks = s.lower().translate(translator).strip().split()
+    return [tok for tok in toks if tok.isalpha()]
 
-def build_vocab(annFile:str = __TRAIN_PATH['annFile'], num_words:int = 10000) -> List[str]:
+def build_vocab(annFile:str = __TRAIN_PATH['annFile'], num_words:int = 5000) -> List[str]:
     """Generate vocab of indexes for all tokens in file
 
     Args:
@@ -86,7 +87,7 @@ def build_vocab(annFile:str = __TRAIN_PATH['annFile'], num_words:int = 10000) ->
         tok = simple_tokenize(sentence)
         count_tok+=Counter(tok)
     
-    cw = sorted([(f,w) for w,f in count_tok.items() if f>1])[:num_words]
+    cw = sorted([(f,w) for w,f in count_tok.items() if f>3], reverse=True)[:num_words]
     vocab = [w for _,w in cw]
     vocab = [__PAD_TOKEN] + vocab + [__UNK_TOKEN, __EOS_TOKEN]
     return vocab

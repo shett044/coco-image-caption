@@ -45,7 +45,7 @@ parser.add_argument('--type', default='torch.cuda.FloatTensor',
                     help='type of tensor - e.g torch.cuda.HalfTensor')
 parser.add_argument('-j', '--workers', default=8, type=int, metavar='N',
                     help='number of data loading workers (default: 8)')
-parser.add_argument('--epochs', default=20, type=int, metavar='N',
+parser.add_argument('--epochs', default=40, type=int, metavar='N',
                     help='number of total epochs to run')
 parser.add_argument('--start_epoch', default=0, type=int, metavar='N',
                     help='manual epoch number (useful on restarts)')
@@ -57,7 +57,7 @@ parser.add_argument('--optimizer', default='Adam', type=str, metavar='OPT',
                     help='optimizer function used')
 parser.add_argument('--grad_clip', default=5., type=float,
                     help='gradient max norm')
-parser.add_argument('--lr', '--learning_rate', default=0.01, type=float,
+parser.add_argument('--lr', '--learning_rate', default=0.0001, type=float,
                     metavar='LR', help='initial learning rate')
 parser.add_argument('--lr_decay', '--learning_rate_decay', default=0.8, type=float,
                     metavar='LR', help='learning rate decay')
@@ -190,7 +190,7 @@ def main():
 """
 Display image and see the caption performance
 """
-__COCO_IMG_PATH = Path( "caption", "data", "val_004_image")
+__COCO_IMG_PATH = Path( "caption", "data", "val2014")
 
 __COCO_ANN_PATH = Path("caption", "data", "annotate")
 

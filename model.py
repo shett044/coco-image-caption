@@ -28,7 +28,7 @@ class CaptionModel(nn.Module):
         self.img_embed = nn.Linear(cnn.fc.in_features, embed_size)
         self.lstm = nn.LSTM(embed_size, 
                             self.rnn_size, 
-                            self.num_layers, dropout = 0.1
+                            self.num_layers, dropout = 0.05
                             )
         self.b1 = nn.BatchNorm1d(rnn_size)
         self.classifier = nn.Linear(rnn_size, len(vocab))
